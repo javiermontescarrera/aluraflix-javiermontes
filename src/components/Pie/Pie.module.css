@@ -1,0 +1,27 @@
+.pie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--negro);
+    box-sizing: border-box;
+    height: 125px;
+    border-top: 4px solid #2271D1;
+    box-shadow: 0px -39px 39px 0px rgba(34, 113, 209, 0.7);
+    width:100%;
+}
+
+.logoContainer {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer img {
+    height: 40px;
+}
+
+.pie h2 {
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: var(--blanco);
+}
