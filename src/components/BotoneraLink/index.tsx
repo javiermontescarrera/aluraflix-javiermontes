@@ -11,7 +11,8 @@ const BotoneraLink = (props: PropsWithChildren<{url: string, selectedButton?: bo
             style={
                     { 
                         borderColor: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}` , 
-                        boxShadow: `${(!selectedButton)?"none":"inset 0px 0px 29px 0px rgba(34, 113, 209, 0.7)"}` 
+                        boxShadow: `${(!selectedButton)?"none":"inset 0px 0px 29px 0px rgba(34, 113, 209, 0.7)"}`, 
+                        color: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}`
                     }
                 }
         >
