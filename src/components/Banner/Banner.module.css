@@ -1,8 +1,8 @@
 .capa {
     width: 100%;
     height: 832px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    /* background-size:auto;
+    background-repeat: no-repeat; */
     box-shadow: inset 0px 45px 39px -39px rgba(34, 113, 209, 0.7);
 }
 
