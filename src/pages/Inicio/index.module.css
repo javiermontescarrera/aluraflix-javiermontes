@@ -1,0 +1,12 @@
+.inicio {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--negro);
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    gap: 1rem;
+}

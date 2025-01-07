@@ -1,9 +1,10 @@
 import { createContext, FC, useState, useContext } from "react";
 type videoType = {
-    id: number;
+    id: string;
     titulo: string;
-    capa: string;
+    categoria: string;
     link: string;
+    descripcion: string;
   }
   
 type FavoritosContextType = {
