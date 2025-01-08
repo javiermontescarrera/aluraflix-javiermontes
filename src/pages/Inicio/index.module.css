@@ -1,8 +1,8 @@
 .inicio {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
     width: 100%;
-    background-color: var(--negro);
     margin: 0;
     padding: 45px;
 }
@@ -13,7 +13,14 @@
     padding: 0;
     margin: 0;
     width: 100%;
+    max-width: 2440px;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .inicio {
+        padding: 21px;
+    }
 }

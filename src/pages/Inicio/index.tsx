@@ -15,7 +15,7 @@ const Inicio = () => {
 
     return (
         <div className={styles.inicio}>
-            <section className={styles.container}>
+            <div className={styles.container}>
                 {/* {
                     videos.map((video: videoType) => {
                             return <Card {...video} />
@@ -25,11 +25,11 @@ const Inicio = () => {
                 <MiniaturaVideo 
                     video={
                             {
-                                id: "GJfOSoaXk4s", 
-                                titulo: "¿Qué es JavaScript?", 
+                                id: "PztCEdIJITY", 
+                                titulo: "Cuándo usar let, var y const?", 
                                 categoria: "FRONT END", 
-                                link: "https://www.youtube.com/watch?v=GJfOSoaXk4s", 
-                                descripcion: "JavaScript: ¿qué es y cómo se hizo este lenguaje que genera muchas discusiones y debates entre la gente del área de desarrollo? Genesys y Gabriela nos hablan exactamente de esto en este Alura Tips."
+                                link: "https://www.youtube.com/watch?v=PztCEdIJITY", 
+                                descripcion: "¿A veces cuando estás programando sientes dificuldades en saber en qué momento utilizar let, var o const para declarar una variable? En este video te sacamos estas dudas, además de explicarte lo que es escopo global y local en JavaScript."
                             }
                         }
                 />
@@ -47,15 +47,15 @@ const Inicio = () => {
                 <MiniaturaVideo 
                     video={
                             {
-                                id: "GJfOSoaXk4s", 
-                                titulo: "¿Qué es JavaScript?", 
+                                id: "rpvrLaBQwgg", 
+                                titulo: "Equipo Front End #AluraMás", 
                                 categoria: "FRONT END", 
-                                link: "https://www.youtube.com/watch?v=GJfOSoaXk4s", 
-                                descripcion: "JavaScript: ¿qué es y cómo se hizo este lenguaje que genera muchas discusiones y debates entre la gente del área de desarrollo? Genesys y Gabriela nos hablan exactamente de esto en este Alura Tips."
+                                link: "https://www.youtube.com/watch?v=rpvrLaBQwgg", 
+                                descripcion: "¿Estás empezando tus estudios de Programación? ¿Te interesa todo lo que es la creación de Páginas Web Desarrollo de Softwares? ¿O estás pensando en cambiar de carrera y entrar a la maravillosa area de tecnología?"
                             }
                         }
                 />
-            </section>
+            </div>
         </div>
     )
 }

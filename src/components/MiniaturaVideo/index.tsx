@@ -7,7 +7,11 @@ const MiniaturaVideo = ({video, hideButtons}:{video: videoType, hideButtons?: bo
     return (
         <div 
             className={styles.miniatura}
-            style={{ width: `${(!hideButtons) ? "430px" : "647.79px"}`}}
+            // style={{ width: `${(!hideButtons) ? "430px" : "647.79px"}`}}
+            style={{ 
+                width: `${(!hideButtons) ? "32%" : "49%"}`,
+                maxWidth: `${(!hideButtons) ? "750px;" : "2000px"}`,
+            }}
         >
             <div className= {`${styles.gradient} ${hideButtons ? styles.gradient__botonera__oculta : ''}`} >
                 <img 

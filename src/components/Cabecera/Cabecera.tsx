@@ -5,14 +5,16 @@ import Botonera from "../Botonera";
 const Cabecera = () => {
     return (
         <header className={styles.cabecera}>
-            <Link to="/">
-                <section className={styles.logoContainer}>
-                    <img src="/img/LogoMain.png" alt="Logo AluraFlix"/>
-                </section>
-            </Link>
-            <nav>
-                <Botonera />
-            </nav>
+            <div className={styles.cabecera__placeholder}>
+                <Link to="/">
+                    <section className={styles.logoContainer}>
+                        <img src="/img/LogoMain.png" alt="Logo AluraFlix"/>
+                    </section>
+                </Link>
+                <nav className={styles.navegacion}>
+                    <Botonera />
+                </nav>
+            </div>
         </header>
     )
 }
