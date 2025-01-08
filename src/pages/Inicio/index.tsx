@@ -33,6 +33,28 @@ const Inicio = () => {
                             }
                         }
                 />
+                <MiniaturaVideo 
+                    video={
+                            {
+                                id: "GJfOSoaXk4s", 
+                                titulo: "¿Qué es JavaScript?", 
+                                categoria: "FRONT END", 
+                                link: "https://www.youtube.com/watch?v=GJfOSoaXk4s", 
+                                descripcion: "JavaScript: ¿qué es y cómo se hizo este lenguaje que genera muchas discusiones y debates entre la gente del área de desarrollo? Genesys y Gabriela nos hablan exactamente de esto en este Alura Tips."
+                            }
+                        }
+                />
+                <MiniaturaVideo 
+                    video={
+                            {
+                                id: "GJfOSoaXk4s", 
+                                titulo: "¿Qué es JavaScript?", 
+                                categoria: "FRONT END", 
+                                link: "https://www.youtube.com/watch?v=GJfOSoaXk4s", 
+                                descripcion: "JavaScript: ¿qué es y cómo se hizo este lenguaje que genera muchas discusiones y debates entre la gente del área de desarrollo? Genesys y Gabriela nos hablan exactamente de esto en este Alura Tips."
+                            }
+                        }
+                />
             </section>
         </div>
     )

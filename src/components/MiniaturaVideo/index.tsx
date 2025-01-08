@@ -9,30 +9,31 @@ const MiniaturaVideo = ({video, hideButtons}:{video: videoType, hideButtons?: bo
             className={styles.miniatura}
             style={{ width: `${(!hideButtons) ? "430px" : "647.79px"}`}}
         >
-            <div 
-                className={styles.gradient}
-                // style={{ backgroundImage: `url("https://img.youtube.com/vi/${video.id}/maxresdefault.jpg")`}}
-            >
-                
-                <img src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} alt="Miniatura" />
+            <div className= {`${styles.gradient} ${hideButtons ? styles.gradient__botonera__oculta : ''}`} >
+                <img 
+                    src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                    alt={`Miniatura video ${video.titulo}`} 
+                />
             </div>
-            <section 
-                className={styles.botonera} 
-                style={{ display: `${(!hideButtons) ? "flex" : "none"}`}}
-            >
-                <div className={styles.boton}>
-                    <img src={iconoBorrar} alt="Borrar" />
-                    <span>
-                        Borrar
-                    </span>
-                </div>
-                <div className={styles.boton}>
-                    <img src={iconoEditar} alt="Editar" />
-                    <span>
-                        Editar
-                    </span>
-                </div>
-            </section>
+            {
+                !hideButtons && 
+                <section 
+                    className={styles.botonera} 
+                >
+                    <div className={styles.boton}>
+                        <img src={iconoBorrar} alt="Borrar" />
+                        <span>
+                            Borrar
+                        </span>
+                    </div>
+                    <div className={styles.boton}>
+                        <img src={iconoEditar} alt="Editar" />
+                        <span>
+                            Editar
+                        </span>
+                    </div>
+                </section>
+            }
         </div>
     )
 }

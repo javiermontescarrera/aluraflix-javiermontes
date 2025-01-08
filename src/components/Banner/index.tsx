@@ -1,7 +1,11 @@
 import Tag from "../Tag";
 import styles from "./Banner.module.css";
+import { useFavoritosContext } from "../../context/AluraFlix";
+import MiniaturaVideo from "../MiniaturaVideo";
 
 const Banner = () => {
+  const { selectedVideo } = useFavoritosContext();
+
   return (
     <div
       className={styles.capa}
@@ -9,8 +13,14 @@ const Banner = () => {
     >
         <div className={styles.gradient}>
         </div>
-        <div style={{position: "absolute", top: "50%", transform: "translate(40.11px, -550px)"}}>
-          <Tag titulo="Front End" color="#6BD1FF" alto={92} fontsize={48} ancho={297} />
+        <div className={styles.detalleVideo}>
+          <div className={styles.descripcionVideo}>
+            <Tag titulo={selectedVideo.categoria} color="#6BD1FF" alto={92} fontsize={48} ancho={297} />
+            <br />
+            <h1>{selectedVideo.titulo}</h1>
+            <p>{selectedVideo.descripcion}</p>
+          </div>
+          <MiniaturaVideo video={selectedVideo} hideButtons />
         </div>
     </div>
   );

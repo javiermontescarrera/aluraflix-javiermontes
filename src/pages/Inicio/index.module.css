@@ -4,9 +4,16 @@
     width: 100%;
     background-color: var(--negro);
     margin: 0;
+    padding: 45px;
 }
 
 .container {
     display: flex;
     gap: 1rem;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
