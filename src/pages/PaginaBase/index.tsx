@@ -9,8 +9,8 @@ const PaginaBase = () => {
     return (
         <main>
             <Cabecera />
-            < Banner />
             <AluraFlixProvider>
+                < Banner />
                 <Container>
                     <Outlet />
                 </Container>
