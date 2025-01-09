@@ -5,7 +5,6 @@ import styles from "./MiniaturaVideo.module.css";
 import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
 import iconoEditar from "./IconoEditar.png";
-import { useAluraFlixContext } from "../../context/AluraFlix";
 
 const MiniaturaVideo = (
     {
@@ -22,27 +21,40 @@ const MiniaturaVideo = (
         
     const color = colorCategoria ? colorCategoria : "#6BD1FF";
     const shadowColor = hexToRgba(color, 1);
-    const shadowColorHover = hexToRgba(color, 2.5);
     const colorIconos = hexToRgba(color, 0.85);
-    const divRef = useRef(null);
-    const { anchoPantalla } = useAluraFlixContext();
-    const [width, setWidth] = useState(100); // Estado para almacenar el ancho
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const [iconSize, setIconSize] = useState(100);
 
     const handleClick = () => {
         videoClick(video);
     }
 
+    // Usamos un efecto para configurar el ResizeObserver
     useEffect(() => {
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.target === divRef.current) {
+                    const anchoComponente = entry.contentRect.width;
+                    setIconSize(anchoComponente * 0.15);
+                }
+            }
+        });
+
         if (divRef.current) {
-            setWidth(divRef.current.getBoundingClientRect().width*.15);
+            resizeObserver.observe(divRef.current);
         }
-    }, [anchoPantalla]);
+
+        return () => {
+            if (divRef.current) {
+                resizeObserver.unobserve(divRef.current);
+            }
+        };
+    }, []);
 
     const styleMiniatura = {
         width: `${(!hideButtons) ? "32%" : "49%"}`,
         maxWidth: `${(!hideButtons) ? "750px" : "1900px"}`,
-        '--shadow-color': shadowColor,
-        '--shadow-color-hover': shadowColorHover
+        '--shadow-color': shadowColor
     };
 
     return (
@@ -52,7 +64,7 @@ const MiniaturaVideo = (
             style={styleMiniatura}
         >
             <div 
-                className= {`${styles.miniatura__container} ${hideButtons ? styles.miniatura__container__botonera__oculta : ''}`} 
+                className={`${styles.miniatura__container} ${hideButtons ? styles.miniatura__container__botonera__oculta : ''}`} 
                 onClick={handleClick}
             >
                 <img 
@@ -62,9 +74,9 @@ const MiniaturaVideo = (
                 <div className={styles.overlay}>
                     {
                         hideButtons ?
-                        <MdOutlinePlayCircleFilled className={styles.iconoAccion} size={width} color={colorIconos} />
+                        <MdOutlinePlayCircleFilled className={styles.iconoAccion} size={iconSize} color={colorIconos} />
                         :
-                        <MdRemoveRedEye className={styles.iconoAccion} size={width} color={colorIconos} />
+                        <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
                     }
                 </div>
             </div>
