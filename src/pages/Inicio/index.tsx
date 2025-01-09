@@ -1,9 +1,6 @@
-// import Banner from "../../components/Banner";
 import MiniaturaVideo from "../../components/MiniaturaVideo";
 import styles from "./index.module.css";
 import { useAluraFlixContext } from "../../context/AluraFlix";
-// import { useState, useEffect } from "react";
-// import { videoType } from "../../context/Favoritos";
 
 const Inicio = () => {
     // const [videos, setVideos] = useState<videoType[]>([]);

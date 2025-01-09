@@ -25,7 +25,7 @@ const Banner = () => {
             <h1>{selectedVideo.titulo}</h1>
             <p>{selectedVideo.descripcion}</p>
           </div>
-          <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo}/>
+          <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo} />
         </div>
     </div>
   );

@@ -1,4 +1,11 @@
-import { createContext, FC, useState, useContext } from "react";
+import { 
+    createContext,
+    FC,
+    useState,
+    useContext,
+    useEffect
+} from "react";
+
 type videoType = {
     id: string;
     titulo: string;
@@ -21,14 +28,18 @@ type AluraFlixContextType = {
     setFavorito: (favorito: videoType[]) => void;
     selectedVideo: videoType;
     setSelectedVideo: (video: videoType) => void;
+    anchoPantalla: number;
+    setAnchoPantalla: (ancho: number) => void;
   }
 
-const AluraFlixContext = createContext<AluraFlixContextType>(
-                            { 
-                                favorito: [], setFavorito: () => {}, 
-                                selectedVideo: initialVideo, setSelectedVideo: () => {} 
-                            }
-                        );
+const AluraFlixContext = createContext<AluraFlixContextType>({ 
+    favorito: [],
+    setFavorito: () => {}, 
+    selectedVideo: initialVideo,
+    setSelectedVideo: () => {},
+    anchoPantalla: window.innerWidth,
+    setAnchoPantalla: () => {}
+});
 
 AluraFlixContext.displayName = "AluraFlix";
 
@@ -36,9 +47,31 @@ AluraFlixContext.displayName = "AluraFlix";
 const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [favorito, setFavorito] = useState<videoType[]>([]);
     const [selectedVideo, setSelectedVideo] = useState<videoType>(initialVideo);
+    const [anchoPantalla, setAnchoPantalla] = useState<number>(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setAnchoPantalla(window.innerWidth);
+        };
+    
+        window.addEventListener("resize", handleResize);
+    
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+    
 
     return (
-        <AluraFlixContext.Provider value={{ favorito, setFavorito, selectedVideo, setSelectedVideo }}>
+        <AluraFlixContext.Provider 
+            value={{ 
+                favorito, 
+                setFavorito, 
+                selectedVideo, 
+                setSelectedVideo,
+                anchoPantalla,
+                setAnchoPantalla
+            }}>
             {children}
         </AluraFlixContext.Provider>
     )
@@ -46,8 +79,12 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const useAluraFlixContext = () => {
     const { 
-        favorito, setFavorito, 
-        selectedVideo, setSelectedVideo 
+        favorito,
+        setFavorito,
+        selectedVideo,
+        setSelectedVideo,
+        anchoPantalla,
+        setAnchoPantalla
     } = useContext(AluraFlixContext);
 
     function agregarFavorito(nuevoFavorito: videoType) {
@@ -62,7 +99,14 @@ const useAluraFlixContext = () => {
         return setFavorito(nuevaLista);
     }
     
-    return { favorito, agregarFavorito, selectedVideo, setSelectedVideo };
+    return { 
+        favorito,
+        agregarFavorito,
+        selectedVideo,
+        setSelectedVideo,
+        anchoPantalla,
+        setAnchoPantalla 
+    };
 }
 
 export default AluraFlixProvider;
