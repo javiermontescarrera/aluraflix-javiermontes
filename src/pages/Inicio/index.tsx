@@ -1,17 +1,21 @@
-import Banner from "../../components/Banner";
+// import Banner from "../../components/Banner";
 import MiniaturaVideo from "../../components/MiniaturaVideo";
 import styles from "./index.module.css";
+import { useAluraFlixContext } from "../../context/AluraFlix";
 // import { useState, useEffect } from "react";
 // import { videoType } from "../../context/Favoritos";
 
 const Inicio = () => {
     // const [videos, setVideos] = useState<videoType[]>([]);
+  const { setSelectedVideo } = useAluraFlixContext();
 
     // useEffect(() => {
     //     fetch("https://my-json-server.typicode.com/javiermontescarrera/alura-cinema-api/videos")
     //         .then((response) => response.json())
     //         .then((data) => setVideos(data));
     // }, []);
+
+    
 
     return (
         <div className={styles.inicio}>
@@ -33,6 +37,7 @@ const Inicio = () => {
                             }
                         }
                     colorCategoria = "#6BD1FF"
+                    videoClick = {setSelectedVideo}
                 />
                 <MiniaturaVideo 
                     video={
@@ -45,6 +50,7 @@ const Inicio = () => {
                             }
                         }
                     colorCategoria = "#00C86F"
+                    videoClick = {setSelectedVideo}
                 />
                 <MiniaturaVideo 
                     video={
@@ -57,6 +63,7 @@ const Inicio = () => {
                             }
                         }
                     colorCategoria="#FFBA05"
+                    videoClick = {setSelectedVideo}
                 />
             </div>
         </div>

@@ -4,19 +4,26 @@ import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
 import iconoEditar from "./IconoEditar.png";
 
-const MiniaturaVideo = ({video, hideButtons, colorCategoria}:{video: videoType, hideButtons?: boolean, colorCategoria?: string}) => {
+const MiniaturaVideo = ({video, hideButtons, colorCategoria, videoClick}:{video: videoType, hideButtons?: boolean, colorCategoria?: string, videoClick: (video: videoType) => void}) => {
     const color = colorCategoria ? colorCategoria : "#6BD1FF";
     const shadowColor = hexToRgba(color, 1);
+
+    const handleClick = () => {
+        videoClick(video);
+    }
 
     return (
         <div 
             className={styles.miniatura}
             style={{ 
                 width: `${(!hideButtons) ? "32%" : "49%"}`,
-                maxWidth: `${(!hideButtons) ? "750px;" : "1900px"}`,
+                maxWidth: `${(!hideButtons) ? "750px" : "1900px"}`,
             }}
         >
-            <div className= {`${styles.miniatura__container} ${hideButtons ? styles.miniatura__container__botonera__oculta : ''}`} >
+            <div 
+                className= {`${styles.miniatura__container} ${hideButtons ? styles.miniatura__container__botonera__oculta : ''}`} 
+                onClick={handleClick}
+            >
                 <img 
                     src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
                     alt={`Miniatura video ${video.titulo}`} 

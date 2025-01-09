@@ -1,10 +1,15 @@
 import Tag from "../Tag";
 import styles from "./Banner.module.css";
-import { useFavoritosContext } from "../../context/AluraFlix";
+import { useAluraFlixContext } from "../../context/AluraFlix";
 import MiniaturaVideo from "../MiniaturaVideo";
+import { videoType } from "../../context/AluraFlix";
 
 const Banner = () => {
-  const { selectedVideo } = useFavoritosContext();
+  const { selectedVideo } = useAluraFlixContext();
+
+  const playVideo = (video: videoType) => {
+    console.log(`playVideo ${JSON.stringify(video)}`);
+  };
 
   return (
     <div
@@ -20,7 +25,7 @@ const Banner = () => {
             <h1>{selectedVideo.titulo}</h1>
             <p>{selectedVideo.descripcion}</p>
           </div>
-          <MiniaturaVideo video={selectedVideo} hideButtons />
+          <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo}/>
         </div>
     </div>
   );

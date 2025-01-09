@@ -13,7 +13,7 @@ const MiniaturaVideo = ({video, hideButtons}:{video: videoType, hideButtons?: bo
             // style={{ width: `${(!hideButtons) ? "430px" : "647.79px"}`}}
             style={{ 
                 width: `${(!hideButtons) ? "32%" : "49%"}`,
-                maxWidth: `${(!hideButtons) ? "750px;" : "1900px"}`,
+                maxWidth: `${(!hideButtons) ? "750px" : "1900px"}`,
             }}
         >
             <div 

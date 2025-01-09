@@ -16,21 +16,21 @@ const initialVideo: videoType = {
     descripcion: "¿Cuáles son las principales características de un programador? ¿Qué habilidades y competencias debe tener alguien que quiere seguir esa carrera? En este video Christian Velasco nos habla de las principales características de un Programador."
 }
 
-type FavoritosContextType = {
+type AluraFlixContextType = {
     favorito: videoType[];
     setFavorito: (favorito: videoType[]) => void;
     selectedVideo: videoType;
     setSelectedVideo: (video: videoType) => void;
   }
 
-const FavoritosContext = createContext<FavoritosContextType>(
+const AluraFlixContext = createContext<AluraFlixContextType>(
                             { 
                                 favorito: [], setFavorito: () => {}, 
                                 selectedVideo: initialVideo, setSelectedVideo: () => {} 
                             }
                         );
 
-FavoritosContext.displayName = "Favoritos";
+AluraFlixContext.displayName = "AluraFlix";
 
 
 const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -38,17 +38,17 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [selectedVideo, setSelectedVideo] = useState<videoType>(initialVideo);
 
     return (
-        <FavoritosContext.Provider value={{ favorito, setFavorito, selectedVideo, setSelectedVideo }}>
+        <AluraFlixContext.Provider value={{ favorito, setFavorito, selectedVideo, setSelectedVideo }}>
             {children}
-        </FavoritosContext.Provider>
+        </AluraFlixContext.Provider>
     )
 };
 
-const useFavoritosContext = () => {
+const useAluraFlixContext = () => {
     const { 
         favorito, setFavorito, 
         selectedVideo, setSelectedVideo 
-    } = useContext(FavoritosContext);
+    } = useContext(AluraFlixContext);
 
     function agregarFavorito(nuevoFavorito: videoType) {
         const favoritoRepetido = favorito.some(item=> item.id === nuevoFavorito.id);
@@ -67,4 +67,4 @@ const useFavoritosContext = () => {
 
 export default AluraFlixProvider;
 export type { videoType };
-export { FavoritosContext, useFavoritosContext };
+export { AluraFlixContext, useAluraFlixContext };
