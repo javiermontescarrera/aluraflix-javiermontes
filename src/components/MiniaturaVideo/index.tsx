@@ -11,12 +11,16 @@ const MiniaturaVideo = (
         video,
         hideButtons,
         colorCategoria,
-        videoClick
+        videoClick,
+        updateVideo,
+        deleteVideo
     }:{
         video: videoType,
         hideButtons?: boolean,
         colorCategoria?: string,
-        videoClick: (video: videoType) => void
+        videoClick: (video: videoType) => void,
+        updateVideo: (video: videoType) => void,
+        deleteVideo: (video: videoType) => void
     }) => {
         
     const color = colorCategoria ? colorCategoria : "#6BD1FF";
@@ -24,9 +28,19 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
+    const [deletingVideo, setDeletingVideo] = useState(false);
 
     const handleClick = () => {
         videoClick(video);
+    }
+
+    const handleDelete = () => {
+        if (window.confirm(`¿Seguro que quieres borrar el video ${video.titulo}?`))
+        {
+            setDeletingVideo(true);
+            deleteVideo(video);
+            setDeletingVideo(false);
+        }
     }
 
     // Usamos un efecto para configurar el ResizeObserver
@@ -56,6 +70,14 @@ const MiniaturaVideo = (
         maxWidth: `${(!hideButtons) ? "750px" : "1900px"}`,
         '--shadow-color': shadowColor
     };
+
+    if (deletingVideo) {
+        return (
+            <div className={styles.borrando}>
+                <h2>Borrando video...</h2>
+             </div>
+        );
+    }
 
     return (
         <div 
@@ -88,7 +110,7 @@ const MiniaturaVideo = (
                         border: `5px solid ${color}`,
                     }}
                 >
-                    <div className={styles.boton}>
+                    <div className={styles.boton} onClick={handleDelete}>
                         <img src={iconoBorrar} alt="Borrar" />
                         <span>
                             Borrar
