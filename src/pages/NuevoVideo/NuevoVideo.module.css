@@ -1,0 +1,10 @@
+.nuevo_video {
+    margin: 2em 2em;
+}
+
+.titulo {
+    font-size: 1.175rem;
+    text-align: center;
+    font-weight: 500;
+    color: var(--blanco);
+}

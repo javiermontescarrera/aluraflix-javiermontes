@@ -6,14 +6,17 @@ const Inicio = () => {
     const { 
         setSelectedVideo,
         categorias,
-        videos
+        videos,
+        videosListIsChanging,
+        updatingVideoId,
+        deletingVideoId
     } = useAluraFlixContext();
 
-    if (!videos || videos.length<1) {
+    if (videosListIsChanging && !(updatingVideoId || deletingVideoId)) {
         return (
             <div className={styles.loading}>
                 <img src="/img/loading-loading-forever.gif" alt="cargando"/>
-                <h2>Cargando videos disponibles...</h2>
+                <h2>Cargando videos...</h2>
             </div>
         );
     }
