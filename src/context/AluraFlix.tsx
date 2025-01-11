@@ -54,20 +54,20 @@ const AluraFlixContext = createContext<AluraFlixContextType>({
 AluraFlixContext.displayName = "AluraFlix";
 
 const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
-    // const [favorito, setFavorito] = useState<videoType[]>([]);
     const [selectedVideo, setSelectedVideo] = useState<videoType>(initialVideo);
     const [anchoPantalla, setAnchoPantalla] = useState<number>(window.innerWidth);
     const [categorias, setCategorias] = useState<categoriaType[]>([]);
     const [videos, setVideos] = useState<videoType[]>([]);
+    const urlBase = "https://6781529b85151f714b0a4aac.mockapi.io";
 
     const loadCategorias = () => {
-        fetch("https://6781529b85151f714b0a4aac.mockapi.io/categorias")
+        fetch(`${urlBase}/categorias`)
             .then((response) => response.json())
             .then((data) => setCategorias(data));
     }
     
     const loadVideos = () => {
-        fetch("https://6781529b85151f714b0a4aac.mockapi.io/videos")
+        fetch(`${urlBase}/videos`)
             .then((response) => response.json())
             .then((data) => setVideos(data));
     }
@@ -82,10 +82,6 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
         loadCategorias();
         loadVideos();
 
-        fetch("https://6781529b85151f714b0a4aac.mockapi.io/videos")
-            .then((response) => response.json())
-            .then((data) => setVideos(data));
-    
         return () => {
           window.removeEventListener("resize", handleResize);
         };
@@ -117,18 +113,6 @@ const useAluraFlixContext = () => {
         videos,
         loadVideos
     } = useContext(AluraFlixContext);
-
-    // function agregarFavorito(nuevoFavorito: videoType) {
-    //     const favoritoRepetido = favorito.some(item=> item.id === nuevoFavorito.id);
-    //     let nuevaLista= [...favorito];
-    //     if (!favoritoRepetido) {
-    //         nuevaLista.push(nuevoFavorito);
-    //     } else {
-    //         nuevaLista = favorito.filter(item => item.id !== nuevoFavorito.id);
-    //     }
-
-    //     return setFavorito(nuevaLista);
-    // }
 
     const recargarVideos = () => {
         loadVideos();

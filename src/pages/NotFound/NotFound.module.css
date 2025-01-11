@@ -1,7 +1,10 @@
+.not_found_container {
+    color: red;
+}
+
 .error {
     margin: 0 auto;
     font-size: 12em;
-    color: red;
 }
 
 .text_error {

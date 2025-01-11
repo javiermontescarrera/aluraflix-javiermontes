@@ -9,14 +9,22 @@
 
 }
 
-.container {
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    color: var(--blanco);
+    font-size: x-large;
+}
+/* .container {
     display: flex;
     flex-direction: column;
     padding: 0;
     margin: 0;
     width: 100%;
     max-width: 2440px;
-}
+} */
 
 @media screen and (max-width: 768px) {
     .inicio {
