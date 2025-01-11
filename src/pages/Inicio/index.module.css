@@ -1,22 +1,21 @@
 .inicio {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     margin: 0;
     padding: 45px;
+    max-width: 2440px;
+
 }
 
 .container {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     padding: 0;
     margin: 0;
     width: 100%;
     max-width: 2440px;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {

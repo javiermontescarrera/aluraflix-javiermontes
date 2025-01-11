@@ -68,7 +68,7 @@ const MiniaturaVideo = (
                 onClick={handleClick}
             >
                 <img 
-                    src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                    src={video.imagen} 
                     alt={`Miniatura video ${video.titulo}`} 
                 />
                 <div className={styles.overlay}>

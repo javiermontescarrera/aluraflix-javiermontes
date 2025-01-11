@@ -5,7 +5,8 @@ import MiniaturaVideo from "../MiniaturaVideo";
 import { videoType } from "../../context/AluraFlix";
 
 const Banner = () => {
-  const { selectedVideo } = useAluraFlixContext();
+  const { selectedVideo, categorias } = useAluraFlixContext();
+  const categoria = categorias.find((item) => item.id === selectedVideo.categoria) || null;
 
   const playVideo = (video: videoType) => {
     console.log(`playVideo ${JSON.stringify(video)}`);
@@ -20,12 +21,18 @@ const Banner = () => {
         </div>
         <div className={styles.detalleVideo}>
           <div className={styles.descripcionVideo}>
-            <Tag titulo={selectedVideo.categoria} color="#6BD1FF" alto={92} fontsize={48} ancho={297} />
+            {
+              categoria &&
+              <Tag titulo={categoria.nombre} color={categoria.color} alto={92} fontsize={48} ancho={297} />
+            }
             <br />
             <h1>{selectedVideo.titulo}</h1>
             <p>{selectedVideo.descripcion}</p>
           </div>
-          <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo} />
+          {
+            categoria &&
+            <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo} colorCategoria={categoria.color}/>
+          }
         </div>
     </div>
   );

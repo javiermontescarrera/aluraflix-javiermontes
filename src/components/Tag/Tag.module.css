@@ -8,6 +8,7 @@
     align-items: center;
     text-transform: uppercase;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .tag p {
