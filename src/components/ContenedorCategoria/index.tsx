@@ -8,15 +8,11 @@ const ContenedorCategoria = (
     {
         categoria,
         videos,
-        videoClick,
-        updateVideo,
-        deleteVideo
+        videoClick
     }:{
         categoria: categoriaType,
         videos: videoType[],
-        videoClick: (video: videoType) => void,
-        updateVideo: (video: videoType) => void,
-        deleteVideo: (video: videoType) => void
+        videoClick: (video: videoType) => void
     }) => {
 
     return (
@@ -29,8 +25,6 @@ const ContenedorCategoria = (
                                         video={video}
                                         videoClick={videoClick}
                                         colorCategoria={categoria.color}
-                                        updateVideo={updateVideo}
-                                        deleteVideo={deleteVideo}
                                         key={video.id}
                                     />
                         }

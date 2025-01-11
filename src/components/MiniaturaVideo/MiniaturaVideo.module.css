@@ -81,11 +81,17 @@
     cursor: pointer;
 }
 
-.borrando {
+.accion {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20vh;
     color: var(--blanco);
     font-size: x-large;
+    gap: 10px;
+}
+
+.accion img {
+    width: 70px;
+    /* height: 100px;     */
 }

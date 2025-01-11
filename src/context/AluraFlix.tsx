@@ -42,6 +42,9 @@ type AluraFlixContextType = {
     addVideo: (video: videoType) => void;
     updateVideo: (video: videoType) => void;
     deleteVideo: (video: videoType) => void;
+    videosListIsChanging: boolean;
+    updatingVideoId: string;
+    deletingVideoId: string;
   }
 
 const AluraFlixContext = createContext<AluraFlixContextType>({ 
@@ -54,7 +57,10 @@ const AluraFlixContext = createContext<AluraFlixContextType>({
     loadVideos: () => {},
     addVideo: () => {},
     updateVideo: () => {},
-    deleteVideo: () => {}
+    deleteVideo: () => {},
+    videosListIsChanging: false,
+    updatingVideoId: "",
+    deletingVideoId: ""
 });
 
 AluraFlixContext.displayName = "AluraFlix";
@@ -65,6 +71,9 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [categorias, setCategorias] = useState<categoriaType[]>([]);
     const [videos, setVideos] = useState<videoType[]>([]);
     const urlBase = "https://6781529b85151f714b0a4aac.mockapi.io";
+    const [videosListIsChanging, setVideosListIsChanging] = useState(false);
+    const [updatingVideoId, setUpdatingVideoId] = useState("");
+    const [deletingVideoId, setDeletingVideoId] = useState("");
 
     const loadCategorias = () => {
         fetch(`${urlBase}/categorias`)
@@ -73,6 +82,7 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     }
     
     const loadVideos = () => {
+        setVideosListIsChanging(true);
         fetch(`${urlBase}/videos`)
             .then((response) => response.json())
             .then((data: videoType[]) => {
@@ -85,10 +95,17 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
                     else
                     setSelectedVideo(initialVideo);
                 }
-            });
+            })
+            .catch((error) => 
+                console.log(error)
+            )
+            .finally(() => 
+                setVideosListIsChanging(false)
+            );
     }
 
     const addVideo = (video: videoType) => {
+        setVideosListIsChanging(true);
         fetch(`${urlBase}/videos`, {
             method: "POST",
             headers: {
@@ -99,10 +116,18 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
         .then((response) => {
             if (response.ok)
                 loadVideos();
-        });
+        })
+        .catch((error) => 
+            console.log(error)
+        )
+        .finally(() => 
+            setVideosListIsChanging(false)
+        );
     };
 
     const updateVideo = (video: videoType) => {
+        setVideosListIsChanging(true);
+        setUpdatingVideoId(video.id);
         fetch(`${urlBase}/videos/${video.id}`, {
             method: "PUT",
             headers: {
@@ -113,16 +138,32 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
         .then((response) => {
             if (response.ok)
                 loadVideos();
+        })
+        .catch((error) => 
+            console.log(error)
+        )
+        .finally(() => {
+            setUpdatingVideoId("");
+            setVideosListIsChanging(false);
         });
     };
 
     const deleteVideo = (video: videoType) => {
+        setVideosListIsChanging(true);
+        setDeletingVideoId(video.id);
         fetch(`${urlBase}/videos/${video.id}`, {
             method: "DELETE"
         })
         .then((response) => {
             if (response.ok)
                 loadVideos();
+        })
+        .catch((error) => 
+            console.log(error)
+        )
+        .finally(() => {
+            setDeletingVideoId("");
+            setVideosListIsChanging(false)
         });
     }
     
@@ -154,7 +195,10 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
                 loadVideos,
                 addVideo,
                 updateVideo,
-                deleteVideo
+                deleteVideo,
+                videosListIsChanging,
+                updatingVideoId,
+                deletingVideoId
             }}>
             {children}
         </AluraFlixContext.Provider>
@@ -171,7 +215,10 @@ const useAluraFlixContext = () => {
         loadVideos,
         addVideo,
         updateVideo,
-        deleteVideo
+        deleteVideo,
+        videosListIsChanging,
+        updatingVideoId,
+        deletingVideoId
     } = useContext(AluraFlixContext);
 
     const recargarVideos = () => {
@@ -187,7 +234,10 @@ const useAluraFlixContext = () => {
         recargarVideos,
         addVideo,
         updateVideo,
-        deleteVideo
+        deleteVideo,
+        videosListIsChanging,
+        updatingVideoId,
+        deletingVideoId
     };
 }
 

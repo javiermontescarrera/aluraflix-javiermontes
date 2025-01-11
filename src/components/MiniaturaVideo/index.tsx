@@ -5,22 +5,19 @@ import styles from "./MiniaturaVideo.module.css";
 import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
 import iconoEditar from "./IconoEditar.png";
+import { useAluraFlixContext } from "../../context/AluraFlix";
 
 const MiniaturaVideo = (
     {
         video,
         hideButtons,
         colorCategoria,
-        videoClick,
-        updateVideo,
-        deleteVideo
+        videoClick
     }:{
         video: videoType,
         hideButtons?: boolean,
         colorCategoria?: string,
-        videoClick: (video: videoType) => void,
-        updateVideo: (video: videoType) => void,
-        deleteVideo: (video: videoType) => void
+        videoClick: (video: videoType) => void
     }) => {
         
     const color = colorCategoria ? colorCategoria : "#6BD1FF";
@@ -28,19 +25,20 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
-    const [deletingVideo, setDeletingVideo] = useState(false);
-
+    // const [deletingVideo, setDeletingVideo] = useState(false);
+    const { updateVideo, deleteVideo, videosListIsChanging, updatingVideoId, deletingVideoId } = useAluraFlixContext();
+    
     const handleClick = () => {
         videoClick(video);
     }
 
     const handleDelete = () => {
+        // setDeletingVideo(true);
         if (window.confirm(`¿Seguro que quieres borrar el video ${video.titulo}?`))
         {
-            setDeletingVideo(true);
             deleteVideo(video);
-            setDeletingVideo(false);
         }
+        // setDeletingVideo(false);
     }
 
     // Usamos un efecto para configurar el ResizeObserver
@@ -71,10 +69,12 @@ const MiniaturaVideo = (
         '--shadow-color': shadowColor
     };
 
-    if (deletingVideo) {
+    if (updatingVideoId === video.id || deletingVideoId === video.id) {
+        const nombreAccion = updatingVideoId === video.id ? "Actualizando" : "Borrando";
         return (
-            <div className={styles.borrando}>
-                <h2>Borrando video...</h2>
+            <div className={styles.accion}>
+                <img src="/img/loading-loading-forever.gif" alt={nombreAccion}/>
+                <h2>{nombreAccion} video...</h2>
              </div>
         );
     }
