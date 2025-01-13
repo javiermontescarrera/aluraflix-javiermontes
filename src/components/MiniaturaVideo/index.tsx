@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import hexToRgba from "hex-to-rgba";
-import { MdRemoveRedEye, MdOutlinePlayCircleFilled } from "react-icons/md";
+// import { MdRemoveRedEye, MdOutlinePlayCircleFilled } from "react-icons/md";
+import { MdRemoveRedEye } from "react-icons/md";
 import styles from "./MiniaturaVideo.module.css";
 import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
