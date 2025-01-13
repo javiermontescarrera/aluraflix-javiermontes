@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import { useAluraFlixContext } from "../../context/AluraFlix";
-import styles from "./ModalAluraFlix.module.css";
+// import styles from "./ModalAluraFlix.module.css";
 
 const ModalAluraFlix = ({children}: {children: React.ReactNode}) => {
   const { abrirModal, setAbrirModal } = useAluraFlixContext();
