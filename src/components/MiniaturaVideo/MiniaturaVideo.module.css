@@ -95,3 +95,17 @@
     width: 70px;
     /* height: 100px;     */
 }
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal__titulo {
+    font-size: 1.175rem;
+    text-align: center;
+    font-weight: 800;
+    color: var(--azul);
+    font-size: 49px;
+}

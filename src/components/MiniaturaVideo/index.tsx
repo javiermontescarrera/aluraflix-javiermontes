@@ -128,7 +128,10 @@ const MiniaturaVideo = (
                 </section>
             }
             <ModalAluraFlix>
-                <FormularioVideo video={video} />
+                <div className={styles.modal}>
+                    <h2 className={styles.modal__titulo}>Editar Card</h2>
+                    <FormularioVideo video={video} />
+                </div>
             </ModalAluraFlix>
         </div>
     )

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { 
     Button,
     TextField,
@@ -12,9 +14,9 @@ import styles from "./FormularioVideo.module.css";
 import { useAluraFlixContext, videoType } from "../../context/AluraFlix";
 
 const FormularioVideo = ({ video }: { video?: videoType}) => {
-    // const { selectedVideo } = useAluraFlixContext();
-    // video = selectedVideo;
-    const { categorias, addVideo, updateVideo } = useAluraFlixContext();
+    const navigate = useNavigate();
+
+    const { categorias, addVideo, updateVideo, recargarVideos, setAbrirModal } = useAluraFlixContext();
     const [titulo, setTitulo] = useState(video?.titulo || '');
     const [categoria, setCategoria] = useState(video?.categoria || '');
     const [imagen, setImagen] = useState(video?.imagen || '');
@@ -37,12 +39,26 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
             {...video, titulo, categoria, imagen, link, descripcion}
             : 
             {id: "", titulo, categoria, imagen, link, descripcion};
-        console.log(`videoEditado: ${JSON.stringify(videoEditado)}`);
+        // console.log(`videoEditado: ${JSON.stringify(videoEditado)}`);
         
         if (video) {
             updateVideo(videoEditado);
         } else
             addVideo(videoEditado);
+        
+        alert('La operacion se ejecuto exitosamente!');
+        handleLimpiar();
+        recargarVideos();
+        setAbrirModal(false);
+        navigate('/');
+    }
+
+    const handleLimpiar = () => {
+        setTitulo("");
+        setCategoria("");
+        setImagen("");
+        setLink("");
+        setDescripcion("");
     }
 
     const validarTitulo = () => {
@@ -107,11 +123,7 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
             }}
             onReset={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                setTitulo("");
-                setCategoria("");
-                setImagen("");
-                setLink("");
-                setDescripcion("");
+                handleLimpiar();
             }}
         >
             <div className={styles.divider}>
