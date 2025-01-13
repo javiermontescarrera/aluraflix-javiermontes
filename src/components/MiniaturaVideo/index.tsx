@@ -8,6 +8,7 @@ import iconoEditar from "./IconoEditar.png";
 import { useAluraFlixContext } from "../../context/AluraFlix";
 import ModalAluraFlix from "../ModalAluraFlix";
 import FormularioVideo from "../FormularioVideo";
+import ReactPlayer from 'react-player/youtube'
 
 const MiniaturaVideo = (
     {
@@ -27,6 +28,7 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
+    const [playerHeight, setPlayerHeight] = useState(0);
     const { deleteVideo, setAbrirModal, updatingVideoId, deletingVideoId, setVideoEditar } = useAluraFlixContext();
     
     const handleClick = () => {
@@ -52,6 +54,7 @@ const MiniaturaVideo = (
                 if (entry.target === divRef.current) {
                     const anchoComponente = entry.contentRect.width;
                     setIconSize(anchoComponente * 0.15);
+                    setPlayerHeight(anchoComponente * 0.5625);
                 }
             }
         });
@@ -93,18 +96,25 @@ const MiniaturaVideo = (
                 className={`${styles.miniatura__container} ${hideButtons ? styles.miniatura__container__botonera__oculta : ''}`} 
                 onClick={handleClick}
             >
-                <img 
-                    src={video.imagen} 
-                    alt={`Miniatura video ${video.titulo}`} 
-                />
-                <div className={styles.overlay}>
-                    {
-                        hideButtons ?
-                        <MdOutlinePlayCircleFilled className={styles.iconoAccion} size={iconSize} color={colorIconos} />
-                        :
-                        <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
-                    }
-                </div>
+                {
+                    hideButtons ?
+                    <ReactPlayer url={video.link} controls width={"100%"} height={playerHeight}/>
+                    :
+                    <>
+                        <img 
+                            src={video.imagen} 
+                            alt={`Miniatura video ${video.titulo}`} 
+                        />
+                        <div className={styles.overlay}>
+                            {/* {
+                                hideButtons ?
+                                <MdOutlinePlayCircleFilled className={styles.iconoAccion} size={iconSize} color={colorIconos} />
+                                : */}
+                                <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
+                            {/* } */}
+                        </div>
+                    </>
+                }
             </div>
             {
                 !hideButtons && 
@@ -134,6 +144,11 @@ const MiniaturaVideo = (
                     <FormularioVideo/>
                 </div>
             </ModalAluraFlix>
+            {/* <ModalAluraFlix>
+                <div className={styles.modal}>
+                    <FormularioVideo/>
+                </div>
+            </ModalAluraFlix> */}
         </div>
     )
 }
