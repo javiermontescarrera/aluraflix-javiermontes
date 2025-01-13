@@ -25,8 +25,8 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
-    // const [deletingVideo, setDeletingVideo] = useState(false);
-    const { updateVideo, deleteVideo, videosListIsChanging, updatingVideoId, deletingVideoId } = useAluraFlixContext();
+    // const { updateVideo, deleteVideo, videosListIsChanging, updatingVideoId, deletingVideoId } = useAluraFlixContext();
+    const { deleteVideo, updatingVideoId, deletingVideoId } = useAluraFlixContext();
     
     const handleClick = () => {
         videoClick(video);
