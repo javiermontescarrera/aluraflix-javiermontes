@@ -99,10 +99,32 @@
 .modal {
     width: 100%;
     display: flex;
+    position: fixed;
     justify-content: center;
     text-align: center;
     vertical-align: middle;
     align-items: center;
+    top: -400px;
+}
+
+.modal__botonera {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.modal__botonera button {
+    position: relative;
+    background: none;
+    border: none;
+    top: -90px;
+    left: 17px;
+    cursor: pointer;
+}
+
+.modal__cerrar {
+    color: var(--azul);
 }
 
 .modal__contenido {

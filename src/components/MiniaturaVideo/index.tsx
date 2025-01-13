@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import hexToRgba from "hex-to-rgba";
 // import { MdRemoveRedEye, MdOutlinePlayCircleFilled } from "react-icons/md";
 import { MdRemoveRedEye } from "react-icons/md";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import styles from "./MiniaturaVideo.module.css";
 import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
@@ -141,6 +142,11 @@ const MiniaturaVideo = (
             }
             <ModalAluraFlix>
                 <div className={styles.modal}>
+                    <div className={styles.modal__botonera}>
+                        <button onClick={() => setAbrirModal(false)}>
+                            <IoMdCloseCircleOutline size={40} className={styles.modal__cerrar} />
+                        </button>
+                    </div>
                     <div className={styles.modal__contenido}>
                         <h2 className={styles.modal__titulo}>Editar Card</h2>
                         <FormularioVideo/>
