@@ -27,7 +27,7 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
-    const { deleteVideo, setAbrirModal, updatingVideoId, deletingVideoId } = useAluraFlixContext();
+    const { deleteVideo, setAbrirModal, updatingVideoId, deletingVideoId, setVideoEditar } = useAluraFlixContext();
     
     const handleClick = () => {
         videoClick(video);
@@ -41,6 +41,7 @@ const MiniaturaVideo = (
     }
 
     const handleUpdate = () => {
+        setVideoEditar(video);
         setAbrirModal(true);
     }
 
@@ -130,7 +131,7 @@ const MiniaturaVideo = (
             <ModalAluraFlix>
                 <div className={styles.modal}>
                     <h2 className={styles.modal__titulo}>Editar Card</h2>
-                    <FormularioVideo video={video} />
+                    <FormularioVideo/>
                 </div>
             </ModalAluraFlix>
         </div>

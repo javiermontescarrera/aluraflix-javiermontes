@@ -31,6 +31,15 @@ const initialVideo: videoType = {
     imagen: "https://img.youtube.com/vi/ov7vA5HFe6w/maxresdefault.jpg"
 }
 
+const emptyVideo: videoType = {
+    id: "",
+    titulo: "",
+    categoria: "",
+    link: "",
+    descripcion: "",
+    imagen: ""
+}
+
 type AluraFlixContextType = {
     selectedVideo: videoType;
     setSelectedVideo: (video: videoType) => void;
@@ -47,6 +56,9 @@ type AluraFlixContextType = {
     deletingVideoId: string;
     abrirModal: boolean;
     setAbrirModal: (abrirModal: boolean) => void;
+    videoEditar: videoType;
+    setVideoEditar: (video: videoType) => void;
+    emptyVideo: videoType;
   }
 
 const AluraFlixContext = createContext<AluraFlixContextType>({ 
@@ -64,7 +76,10 @@ const AluraFlixContext = createContext<AluraFlixContextType>({
     updatingVideoId: "",
     deletingVideoId: "",
     abrirModal: false,
-    setAbrirModal: () => {}
+    setAbrirModal: () => {},
+    videoEditar: emptyVideo,
+    setVideoEditar: () => {},
+    emptyVideo
 });
 
 AluraFlixContext.displayName = "AluraFlix";
@@ -79,6 +94,7 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [updatingVideoId, setUpdatingVideoId] = useState("");
     const [deletingVideoId, setDeletingVideoId] = useState("");
     const [abrirModal, setAbrirModal] = useState(false);
+    const [videoEditar, setVideoEditar] = useState(emptyVideo);
 
     const loadCategorias = () => {
         fetch(`${urlBase}/categorias`)
@@ -205,7 +221,10 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
                 updatingVideoId,
                 deletingVideoId,
                 abrirModal,
-                setAbrirModal
+                setAbrirModal,
+                videoEditar, 
+                setVideoEditar,
+                emptyVideo
             }}>
             {children}
         </AluraFlixContext.Provider>
@@ -227,7 +246,10 @@ const useAluraFlixContext = () => {
         updatingVideoId,
         deletingVideoId,
         abrirModal,
-        setAbrirModal
+        setAbrirModal,
+        videoEditar,
+        setVideoEditar,
+        emptyVideo
     } = useContext(AluraFlixContext);
 
     const recargarVideos = () => {
@@ -248,7 +270,10 @@ const useAluraFlixContext = () => {
         updatingVideoId,
         deletingVideoId,
         abrirModal,
-        setAbrirModal
+        setAbrirModal,
+        videoEditar, 
+        setVideoEditar,
+        emptyVideo
     };
 }
 

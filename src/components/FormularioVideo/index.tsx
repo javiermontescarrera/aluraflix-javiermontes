@@ -11,17 +11,17 @@ import {
     SelectChangeEvent
 } from '@mui/material';
 import styles from "./FormularioVideo.module.css";
-import { useAluraFlixContext, videoType } from "../../context/AluraFlix";
+import { useAluraFlixContext } from "../../context/AluraFlix";
 
-const FormularioVideo = ({ video }: { video?: videoType}) => {
+const FormularioVideo = () => {
     const navigate = useNavigate();
 
-    const { categorias, addVideo, updateVideo, recargarVideos, setAbrirModal } = useAluraFlixContext();
-    const [titulo, setTitulo] = useState(video?.titulo || '');
-    const [categoria, setCategoria] = useState(video?.categoria || '');
-    const [imagen, setImagen] = useState(video?.imagen || '');
-    const [link, setLink] = useState(video?.link || '');
-    const [descripcion, setDescripcion] = useState(video?.descripcion || ''); 
+    const { categorias, addVideo, updateVideo, recargarVideos, setAbrirModal, videoEditar, setVideoEditar, emptyVideo } = useAluraFlixContext();
+    const [titulo, setTitulo] = useState(videoEditar?.titulo || '');
+    const [categoria, setCategoria] = useState(videoEditar?.categoria || '');
+    const [imagen, setImagen] = useState(videoEditar?.imagen || '');
+    const [link, setLink] = useState(videoEditar?.link || '');
+    const [descripcion, setDescripcion] = useState(videoEditar?.descripcion || ''); 
 
     const [errors, setErrors] = useState({
         name: {
@@ -35,21 +35,23 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
     });
 
     const handleSubmit = () => {
-        const videoEditado = video ? 
-            {...video, titulo, categoria, imagen, link, descripcion}
+        const videoEditado = videoEditar ? 
+            {...videoEditar, titulo, categoria, imagen, link, descripcion}
             : 
             {id: "", titulo, categoria, imagen, link, descripcion};
         // console.log(`videoEditado: ${JSON.stringify(videoEditado)}`);
         
-        if (video) {
+        if (videoEditar) {
             updateVideo(videoEditado);
-        } else
+        } else{
             addVideo(videoEditado);
-        
-        alert('La operacion se ejecuto exitosamente!');
+        }
+
+        setVideoEditar(emptyVideo);
         handleLimpiar();
         recargarVideos();
         setAbrirModal(false);
+        alert('La operacion se ejecuto exitosamente!');
         navigate('/');
     }
 
@@ -245,10 +247,6 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
             <div className={styles.divider}>
                 <Button variant="contained" type="submit">GUARDAR</Button>
                 <Button variant="contained" type="reset">LIMPIAR</Button>
-                {/* <div className={styles.contenedorCampo}>
-                </div>
-                <div className={styles.contenedorCampo}>
-                </div> */}
             </div>
         </form>
     );
