@@ -39,10 +39,10 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
             {id: "", titulo, categoria, imagen, link, descripcion};
         console.log(`videoEditado: ${JSON.stringify(videoEditado)}`);
         
-        // if (video) {
-        //     updateVideo(videoEditado);
-        // } else
-        //     addVideo(videoEditado);
+        if (video) {
+            updateVideo(videoEditado);
+        } else
+            addVideo(videoEditado);
     }
 
     const validarTitulo = () => {
