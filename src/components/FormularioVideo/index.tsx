@@ -104,8 +104,16 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
             onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
                 handleSubmit();
-            }
-        }>
+            }}
+            onReset={(e: React.FormEvent<HTMLFormElement>) => {
+                e.preventDefault();
+                setTitulo("");
+                setCategoria("");
+                setImagen("");
+                setLink("");
+                setDescripcion("");
+            }}
+        >
             <div className={styles.divider}>
                 <div className={styles.contenedorCampo}>
                     <span>Título</span>
@@ -139,7 +147,11 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
                                     textAlign: 'left',
                                     borderRadius: '10px',
                                     border: '1px solid #ccc',
+                                    font: 'inherit'
                                 }}
+                                // sx={{
+                                //     fontSize: 20,
+                                // }}
                                 onChange={(event: SelectChangeEvent) => {
                                     setCategoria(event.target.value as string);
                                 }}
@@ -217,7 +229,15 @@ const FormularioVideo = ({ video }: { video?: videoType}) => {
                     minRows={4}
                 />
             </div>
-            <Button variant="contained" type="submit">GUARDAR</Button>
+
+            <div className={styles.divider}>
+                <Button variant="contained" type="submit">GUARDAR</Button>
+                <Button variant="contained" type="reset">LIMPIAR</Button>
+                {/* <div className={styles.contenedorCampo}>
+                </div>
+                <div className={styles.contenedorCampo}>
+                </div> */}
+            </div>
         </form>
     );
 };

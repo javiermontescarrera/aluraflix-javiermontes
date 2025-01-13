@@ -45,6 +45,8 @@ type AluraFlixContextType = {
     videosListIsChanging: boolean;
     updatingVideoId: string;
     deletingVideoId: string;
+    abrirModal: boolean;
+    setAbrirModal: (abrirModal: boolean) => void;
   }
 
 const AluraFlixContext = createContext<AluraFlixContextType>({ 
@@ -60,7 +62,9 @@ const AluraFlixContext = createContext<AluraFlixContextType>({
     deleteVideo: () => {},
     videosListIsChanging: false,
     updatingVideoId: "",
-    deletingVideoId: ""
+    deletingVideoId: "",
+    abrirModal: false,
+    setAbrirModal: () => {}
 });
 
 AluraFlixContext.displayName = "AluraFlix";
@@ -74,6 +78,7 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     const [videosListIsChanging, setVideosListIsChanging] = useState(false);
     const [updatingVideoId, setUpdatingVideoId] = useState("");
     const [deletingVideoId, setDeletingVideoId] = useState("");
+    const [abrirModal, setAbrirModal] = useState(false);
 
     const loadCategorias = () => {
         fetch(`${urlBase}/categorias`)
@@ -198,7 +203,9 @@ const AluraFlixProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
                 deleteVideo,
                 videosListIsChanging,
                 updatingVideoId,
-                deletingVideoId
+                deletingVideoId,
+                abrirModal,
+                setAbrirModal
             }}>
             {children}
         </AluraFlixContext.Provider>
@@ -218,7 +225,9 @@ const useAluraFlixContext = () => {
         deleteVideo,
         videosListIsChanging,
         updatingVideoId,
-        deletingVideoId
+        deletingVideoId,
+        abrirModal,
+        setAbrirModal
     } = useContext(AluraFlixContext);
 
     const recargarVideos = () => {
@@ -237,7 +246,9 @@ const useAluraFlixContext = () => {
         deleteVideo,
         videosListIsChanging,
         updatingVideoId,
-        deletingVideoId
+        deletingVideoId,
+        abrirModal,
+        setAbrirModal
     };
 }
 

@@ -6,6 +6,8 @@ import { videoType } from "../../context/AluraFlix";
 import iconoBorrar from "./IconoBorrar.png";
 import iconoEditar from "./IconoEditar.png";
 import { useAluraFlixContext } from "../../context/AluraFlix";
+import ModalAluraFlix from "../ModalAluraFlix";
+import FormularioVideo from "../FormularioVideo";
 
 const MiniaturaVideo = (
     {
@@ -25,20 +27,21 @@ const MiniaturaVideo = (
     const colorIconos = hexToRgba(color, 0.85);
     const divRef = useRef<HTMLDivElement | null>(null);
     const [iconSize, setIconSize] = useState(100);
-    // const { updateVideo, deleteVideo, videosListIsChanging, updatingVideoId, deletingVideoId } = useAluraFlixContext();
-    const { deleteVideo, updatingVideoId, deletingVideoId } = useAluraFlixContext();
+    const { deleteVideo, setAbrirModal, updatingVideoId, deletingVideoId } = useAluraFlixContext();
     
     const handleClick = () => {
         videoClick(video);
     }
 
     const handleDelete = () => {
-        // setDeletingVideo(true);
         if (window.confirm(`¿Seguro que quieres borrar el video ${video.titulo}?`))
         {
             deleteVideo(video);
         }
-        // setDeletingVideo(false);
+    }
+
+    const handleUpdate = () => {
+        setAbrirModal(true);
     }
 
     // Usamos un efecto para configurar el ResizeObserver
@@ -116,7 +119,7 @@ const MiniaturaVideo = (
                             Borrar
                         </span>
                     </div>
-                    <div className={styles.boton}>
+                    <div className={styles.boton} onClick={handleUpdate}>
                         <img src={iconoEditar} alt="Editar" />
                         <span>
                             Editar
@@ -124,6 +127,9 @@ const MiniaturaVideo = (
                     </div>
                 </section>
             }
+            <ModalAluraFlix>
+                <FormularioVideo video={video} />
+            </ModalAluraFlix>
         </div>
     )
 }
