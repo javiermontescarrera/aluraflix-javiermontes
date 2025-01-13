@@ -3,8 +3,6 @@ import styles from "./ContenedorCategoria.module.css"
 import { categoriaType, videoType } from "../../context/AluraFlix";
 import MiniaturaVideo from "../MiniaturaVideo";
 import hexToRgba from "hex-to-rgba";
-import { backdropClasses } from "@mui/material";
-
 
 const ContenedorCategoria = (
     {
