@@ -46,6 +46,11 @@ Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Est
 
 ---
 
+### Reproducción de videos:
+<img src="public/screenshots/Reproduccion-Videos.png" alt="Reprodiccion de videos" width="500"/>
+
+---
+
 ### Inicio - Mobile:
 <img src="public/screenshots/Landing-Mobile.png" alt="Inicio mobile" width="500"/>
 
