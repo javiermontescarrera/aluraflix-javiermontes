@@ -117,138 +117,148 @@ const FormularioVideo = () => {
         });
     }
     return (
-        <form
-            className={styles.formulario} 
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                e.preventDefault();
-                handleSubmit();
-            }}
-            onReset={(e: React.FormEvent<HTMLFormElement>) => {
-                e.preventDefault();
-                handleLimpiar();
-            }}
-        >
-            <div className={styles.divider}>
-                <div className={styles.contenedorCampo}>
-                    <span>Título</span>
+        <div className={styles.contenedorFormulario}>            
+            <form
+                className={styles.formulario} 
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                    e.preventDefault();
+                    handleSubmit();
+                }}
+                onReset={(e: React.FormEvent<HTMLFormElement>) => {
+                    e.preventDefault();
+                    handleLimpiar();
+                }}
+            >
+                <div className={styles.divider}>
+                    <div className={styles.contenedorCampo}>
+                        <span>Título</span>
+                        <TextField 
+                            id="titulo" 
+                            // label="Título" 
+                            variant="outlined" 
+                            fullWidth 
+                            margin="none"
+                            value={titulo}
+                            onChange={(e) => setTitulo(e.target.value)}
+                            required
+                            error={errors.name.error}
+                            helperText={errors.name.error ? errors.name.message : ""}
+                            onBlur={() => validarTitulo()}
+                        />
+                    </div>
+                    <div className={styles.contenedorCampo}>
+                        <span>Categoría</span>
+                        <Box sx={{ minWidth: "100%" }}>
+                            <FormControl fullWidth>
+                                <Select
+                                    value={categoria}
+                                    required
+                                    style={{ 
+                                        // background: "black",
+                                        fontSize: 25,
+                                        color: "white",
+                                        width: "100%",
+                                        height: '49px',
+                                        textAlign: 'left',
+                                        borderRadius: '10px',
+                                        border: '1px solid #ccc',
+                                        font: 'inherit'
+                                    }}
+                                    // sx={{
+                                    //     fontSize: 20,
+                                    // }}
+                                    onChange={(event: SelectChangeEvent) => {
+                                        setCategoria(event.target.value as string);
+                                    }}
+                                >
+                                    {
+                                        categorias.map((categoria) => (
+                                            <MenuItem
+                                                key={categoria.id}
+                                                value={categoria.id}
+                                                style={{ 
+                                                    background: "black",
+                                                    fontSize: 25,
+                                                    color: "white",
+                                                    width: "100%",
+                                                    height: '50px',
+                                                    textAlign: 'left'
+                                                }}
+                                            >
+                                                {categoria.nombre}
+                                            </MenuItem>
+                                        ))
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
+                </div>
+                <div className={styles.divider}>
+                    <div className={styles.contenedorCampo}>
+                        <span>Imagen</span>
+                        <TextField 
+                            id="imagen" 
+                            // label="Imagen" 
+                            variant="outlined" 
+                            fullWidth 
+                            margin="none"
+                            value={imagen}
+                            onChange={(e) => setImagen(e.target.value)}
+                            required
+                            error={errors.name.error}
+                            helperText={errors.name.error ? errors.name.message : ""}
+                            onBlur={() => validarUrl(imagen)}
+                        />
+                    </div>
+                    <div className={styles.contenedorCampo}>
+                        <span>Video</span>
+                        <TextField 
+                            id="video" 
+                            variant="outlined" 
+                            fullWidth 
+                            margin="none"
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
+                            required
+                            error={errors.name.error}
+                            helperText={errors.name.error ? errors.name.message : ""}
+                            onBlur={() => validarUrl(link)}
+                        />
+                    </div>
+                </div>
+                <div className={styles.monocomponente} >
+                    <span>Descripción</span>
                     <TextField 
-                        id="titulo" 
-                        // label="Título" 
+                        id="descripcion" 
                         variant="outlined" 
-                        fullWidth 
+                        fullWidth
+                        multiline
                         margin="none"
-                        value={titulo}
-                        onChange={(e) => setTitulo(e.target.value)}
+                        value={descripcion}
+                        onChange={(e) => setDescripcion(e.target.value)}
                         required
                         error={errors.name.error}
                         helperText={errors.name.error ? errors.name.message : ""}
-                        onBlur={() => validarTitulo()}
+                        onBlur={() => validarDescripcion()}
+                        minRows={4}
+                        slotProps={{
+                            input: {
+                                    style: {
+                                        padding: "0px",
+                                        width: "fit-content",
+                                    },
+                            },
+                        }}
                     />
                 </div>
-                <div className={styles.contenedorCampo}>
-                    <span>Categoría</span>
-                    <Box sx={{ minWidth: "100%" }}>
-                        <FormControl fullWidth>
-                            <Select
-                                value={categoria}
-                                required
-                                style={{ 
-                                    // background: "black",
-                                    fontSize: 25,
-                                    color: "white",
-                                    width: "100%",
-                                    height: '49px',
-                                    textAlign: 'left',
-                                    borderRadius: '10px',
-                                    border: '1px solid #ccc',
-                                    font: 'inherit'
-                                }}
-                                // sx={{
-                                //     fontSize: 20,
-                                // }}
-                                onChange={(event: SelectChangeEvent) => {
-                                    setCategoria(event.target.value as string);
-                                }}
-                            >
-                                {
-                                    categorias.map((categoria) => (
-                                        <MenuItem
-                                            key={categoria.id}
-                                            value={categoria.id}
-                                            style={{ 
-                                                background: "black",
-                                                fontSize: 25,
-                                                color: "white",
-                                                width: "100%",
-                                                height: '50px',
-                                                textAlign: 'left'
-                                            }}
-                                        >
-                                            {categoria.nombre}
-                                        </MenuItem>
-                                    ))
-                                }
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </div>
-            </div>
-            <div className={styles.divider}>
-                <div className={styles.contenedorCampo}>
-                    <span>Imagen</span>
-                    <TextField 
-                        id="imagen" 
-                        // label="Imagen" 
-                        variant="outlined" 
-                        fullWidth 
-                        margin="none"
-                        value={imagen}
-                        onChange={(e) => setImagen(e.target.value)}
-                        required
-                        error={errors.name.error}
-                        helperText={errors.name.error ? errors.name.message : ""}
-                        onBlur={() => validarUrl(imagen)}
-                    />
-                </div>
-                <div className={styles.contenedorCampo}>
-                    <span>Video</span>
-                    <TextField 
-                        id="video" 
-                        variant="outlined" 
-                        fullWidth 
-                        margin="none"
-                        value={link}
-                        onChange={(e) => setLink(e.target.value)}
-                        required
-                        error={errors.name.error}
-                        helperText={errors.name.error ? errors.name.message : ""}
-                        onBlur={() => validarUrl(link)}
-                    />
-                </div>
-            </div>
-            <div className={styles.monocomponente} >
-                <span style={{ marginLeft: "16px" }}>Descripción</span>
-                <TextField 
-                    id="descripcion" 
-                    variant="outlined" 
-                    fullWidth
-                    multiline
-                    margin="none"
-                    value={descripcion}
-                    onChange={(e) => setDescripcion(e.target.value)}
-                    required
-                    error={errors.name.error}
-                    helperText={errors.name.error ? errors.name.message : ""}
-                    onBlur={() => validarDescripcion()}
-                    minRows={4}
-                />
-            </div>
 
-            <div className={styles.divider}>
-                <Button variant="contained" type="submit">GUARDAR</Button>
-                <Button variant="contained" type="reset">LIMPIAR</Button>
-            </div>
-        </form>
+                <div className={styles.divider}>
+                    <Button variant="contained" type="submit">GUARDAR</Button>
+                    <Button variant="contained" type="reset">LIMPIAR</Button>
+                </div>
+            </form>
+        </div>
     );
 };
 

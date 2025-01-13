@@ -141,8 +141,10 @@ const MiniaturaVideo = (
             }
             <ModalAluraFlix>
                 <div className={styles.modal}>
-                    <h2 className={styles.modal__titulo}>Editar Card</h2>
-                    <FormularioVideo/>
+                    <div className={styles.modal__contenido}>
+                        <h2 className={styles.modal__titulo}>Editar Card</h2>
+                        <FormularioVideo/>
+                    </div>
                 </div>
             </ModalAluraFlix>
         </div>

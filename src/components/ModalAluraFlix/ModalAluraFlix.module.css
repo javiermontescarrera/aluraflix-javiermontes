@@ -23,15 +23,16 @@
     position: 'absolute';
     /* top: 50%;
     left: 50%; */
-    transform: translate(50%, 30%);
+    /* transform: translate(50%, 30%); */
     border: 2px solid var(--azul);
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    min-width: 420px;
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,6 +44,7 @@
     backdrop-filter: blur(5px);
     background: rgba(0, 0, 0, 0.01);
 }
+
 
 .dialog__ {
   position: absolute;

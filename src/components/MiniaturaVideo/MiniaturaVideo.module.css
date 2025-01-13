@@ -97,9 +97,23 @@
 }
 
 .modal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.modal__contenido {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    width: 100%;
+    max-width: 1024px;
+    border: 2px solid var(--azul);
+    border-radius: 20px;
+    padding: 20px;
+    transform: translate(0%, 40%);
 }
 
 .modal__titulo {

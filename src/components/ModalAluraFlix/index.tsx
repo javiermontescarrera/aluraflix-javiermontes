@@ -15,17 +15,19 @@ const ModalAluraFlix = ({children}: {children: React.ReactNode}) => {
         open={abrirModal}
         onClose={handleClose}
         // className={styles.customBackdrop}
-        slotProps={{
-          root: { className: styles.overlay },
-          // root: {
-          //   style: {
-          //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          //     backdropFilter: 'blur(5px)',
-          //   },
-          // },
-        }}
+        // slotProps={{
+        //   root: { className: styles.overlay },
+        //   // root: {
+        //   //   style: {
+        //   //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        //   //     backdropFilter: 'blur(5px)',
+        //   //   },
+        //   // },
+        // }}
       >
-        <Box className={styles.modal} >
+        <Box
+          // className={styles.modal} 
+        >
           {children}
         </Box>
       </Modal>
