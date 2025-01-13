@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import { 
@@ -15,14 +15,23 @@ import { useAluraFlixContext } from "../../context/AluraFlix";
 
 const FormularioVideo = () => {
     const navigate = useNavigate();
-
-    const { categorias, addVideo, updateVideo, recargarVideos, setAbrirModal, videoEditar, setVideoEditar, emptyVideo } = useAluraFlixContext();
+    
+    const { categorias, addVideo, updateVideo, recargarVideos, setAbrirModal, videoEditar, setVideoEditar } = useAluraFlixContext();
     const [titulo, setTitulo] = useState(videoEditar?.titulo || '');
     const [categoria, setCategoria] = useState(videoEditar?.categoria || '');
     const [imagen, setImagen] = useState(videoEditar?.imagen || '');
     const [link, setLink] = useState(videoEditar?.link || '');
     const [descripcion, setDescripcion] = useState(videoEditar?.descripcion || ''); 
-
+    
+    // console.log(`videoEditar: ${JSON.stringify(videoEditar)}`);
+    useEffect(() => {
+        setTitulo(videoEditar?.titulo || '');
+        setCategoria(videoEditar?.categoria || '');
+        setImagen(videoEditar?.imagen || '');
+        setLink(videoEditar?.link || '');
+        setDescripcion(videoEditar?.descripcion || '');
+    }, [videoEditar]);
+    
     const [errors, setErrors] = useState({
         name: {
             error: false,
@@ -39,7 +48,6 @@ const FormularioVideo = () => {
             {...videoEditar, titulo, categoria, imagen, link, descripcion}
             : 
             {id: "", titulo, categoria, imagen, link, descripcion};
-        // console.log(`videoEditado: ${JSON.stringify(videoEditado)}`);
         
         if (videoEditar) {
             updateVideo(videoEditado);
@@ -47,8 +55,8 @@ const FormularioVideo = () => {
             addVideo(videoEditado);
         }
 
-        setVideoEditar(emptyVideo);
         handleLimpiar();
+        setVideoEditar(null);
         recargarVideos();
         setAbrirModal(false);
         alert('La operacion se ejecuto exitosamente!');
