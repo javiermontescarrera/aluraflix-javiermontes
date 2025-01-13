@@ -12,7 +12,7 @@ const Tag = (
                         background: `${color}`,
                         height: `${(alto) ? alto : 70}px`,
                         fontSize: `${(fontsize) ? fontsize : 32}px`,
-                        width: `${(ancho) ? ancho : 432}px`
+                        width: `${(ancho) ? ancho : 400}px`
                     }
                 }
         >

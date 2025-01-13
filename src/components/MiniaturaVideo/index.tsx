@@ -145,11 +145,6 @@ const MiniaturaVideo = (
                     <FormularioVideo/>
                 </div>
             </ModalAluraFlix>
-            {/* <ModalAluraFlix>
-                <div className={styles.modal}>
-                    <FormularioVideo/>
-                </div>
-            </ModalAluraFlix> */}
         </div>
     )
 }
