@@ -5,6 +5,8 @@
     width: 100%;
     max-width: 2440px;
     overflow-x: auto;
+    scrollbar-color: var(--color-categoria) var(--color-categoria);
+    scrollbar-width: thin;
 }
 
 .listaVideos {
