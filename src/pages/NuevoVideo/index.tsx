@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 import styles from "./NuevoVideo.module.css";
 import FormularioVideo from "../../components/FormularioVideo";
@@ -7,7 +7,7 @@ import { useAluraFlixContext } from "../../context/AluraFlix";
 const NuevoVideo = () => {
     const { setVideoEditar } = useAluraFlixContext();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setVideoEditar(null);
     }, []);
 

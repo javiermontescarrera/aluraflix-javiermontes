@@ -74,7 +74,7 @@ const MiniaturaVideo = (
 
     const styleMiniatura = {
         width: `${(!hideButtons) ? "32%" : "49%"}`,
-        maxWidth: `${(!hideButtons) ? "750px" : "1900px"}`,
+        maxWidth: `${(!hideButtons) ? "750px" : "1700px"}`,
         '--shadow-color': shadowColor
     };
 

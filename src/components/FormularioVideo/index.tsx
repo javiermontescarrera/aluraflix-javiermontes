@@ -23,7 +23,6 @@ const FormularioVideo = () => {
     const [link, setLink] = useState(videoEditar?.link || '');
     const [descripcion, setDescripcion] = useState(videoEditar?.descripcion || ''); 
     
-    // console.log(`videoEditar: ${JSON.stringify(videoEditar)}`);
     useEffect(() => {
         setTitulo(videoEditar?.titulo || '');
         setCategoria(videoEditar?.categoria || '');
@@ -141,8 +140,7 @@ const FormularioVideo = () => {
                     <div className={styles.contenedorCampo}>
                         <span>Título</span>
                         <TextField 
-                            id="titulo" 
-                            // label="Título" 
+                            id="titulo"
                             variant="outlined" 
                             fullWidth 
                             margin="none"
@@ -172,9 +170,6 @@ const FormularioVideo = () => {
                                         border: '1px solid #ccc',
                                         font: 'inherit'
                                     }}
-                                    // sx={{
-                                    //     fontSize: 20,
-                                    // }}
                                     onChange={(event: SelectChangeEvent) => {
                                         setCategoria(event.target.value as string);
                                     }}
@@ -185,9 +180,9 @@ const FormularioVideo = () => {
                                                 key={categoria.id}
                                                 value={categoria.id}
                                                 style={{ 
-                                                    background: "black",
+                                                    // background: "black",
                                                     fontSize: 25,
-                                                    color: "white",
+                                                    // color: "white",
                                                     width: "100%",
                                                     height: '50px',
                                                     textAlign: 'left'
@@ -207,7 +202,6 @@ const FormularioVideo = () => {
                         <span>Imagen</span>
                         <TextField 
                             id="imagen" 
-                            // label="Imagen" 
                             variant="outlined" 
                             fullWidth 
                             margin="none"

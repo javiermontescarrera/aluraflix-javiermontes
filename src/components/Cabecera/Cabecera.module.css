@@ -1,7 +1,7 @@
 .cabecera {
     height: 125px;
     width: 100%;
-    min-width: 475px;
+    min-width: 385px;
     border-bottom: 4px solid var(--azul);
     display: flex;
     justify-content: center;

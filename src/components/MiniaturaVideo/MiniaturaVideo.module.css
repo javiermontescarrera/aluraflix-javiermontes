@@ -2,8 +2,8 @@
     border-radius: 15px;
     overflow: hidden;
     box-sizing: border-box;
-    max-width: 750px;
-    min-width: 430px;
+    /* max-width: 750px; */
+    min-width: 345px;
 }
 
 .miniatura__container {
@@ -104,7 +104,6 @@
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    top: -400px;
 }
 
 .modal__botonera {
@@ -144,4 +143,17 @@
     font-weight: 800;
     color: var(--azul);
     font-size: 49px;
+}
+
+
+@media screen and (min-width: 375px) {
+    .modal {
+        top: -440px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        top: -250px;
+    }
 }

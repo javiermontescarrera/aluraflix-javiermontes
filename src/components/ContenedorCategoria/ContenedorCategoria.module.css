@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    max-width: 2440px;
+    max-width: 1440px;
     overflow-x: auto;
     scrollbar-color: var(--color-categoria) var(--color-categoria);
     scrollbar-width: thin;
