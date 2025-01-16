@@ -1,6 +1,6 @@
 .cabecera {
     height: 125px;
-    width: 100%;
+    width: 99.999%;
     /* min-width: 385px; */
     border-bottom: 4px solid var(--azul);
     display: flex;
@@ -34,7 +34,6 @@
 .cabecera__placeholder a { text-decoration: none;}
 
 .cabecera span {
-    /* align-self: self-end; */
     align-self: end;
     text-transform: uppercase;
     font-weight: 600;
