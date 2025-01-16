@@ -108,12 +108,7 @@ const MiniaturaVideo = (
                             alt={`Miniatura video ${video.titulo}`} 
                         />
                         <div className={styles.overlay}>
-                            {/* {
-                                hideButtons ?
-                                <MdOutlinePlayCircleFilled className={styles.iconoAccion} size={iconSize} color={colorIconos} />
-                                : */}
-                                <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
-                            {/* } */}
+                            <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
                         </div>
                     </>
                 }

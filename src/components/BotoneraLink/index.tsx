@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "./BotoneraLink.module.css";
 import { PropsWithChildren } from "react";
 
-const BotoneraLink = (props: PropsWithChildren<{url: string, selectedButton?: boolean, innerShadow?: boolean}>) => {
-    const { url, selectedButton, children } = props
+const BotoneraLink = (props: PropsWithChildren<{url: string, icono?: string, alt?: string, selectedButton?: boolean, innerShadow?: boolean}>) => {
+    const { url, icono, alt, selectedButton, children } = props
     return (
         <Link 
             to={url} 
@@ -16,6 +16,19 @@ const BotoneraLink = (props: PropsWithChildren<{url: string, selectedButton?: bo
                     }
                 }
         >
+            {
+                icono && 
+                <img 
+                    src={icono}
+                    alt={alt}
+                    className={styles.icono}
+                    style={
+                            { 
+                                color: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}`
+                            }
+                        }
+                />
+            }
             {children}
         </Link>
     )

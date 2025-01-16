@@ -9,4 +9,32 @@
     width: 180.12px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 0.25em;
+    height: 50%;
+    width: max-content;
+}
+
+.link:hover {
+    scale: 1.05;
+}
+
+.icono {
+    display: none;
+}
+
+@media screen and (max-width: 769px) {
+    .link {
+        height: 20px;
+        padding: 0.5em;
+        height: 75%;
+    }
+
+    .icono {
+        display: block;
+        width: 20px;
+        height: 20px;
+        fill: var(--azul);
+    }
 }

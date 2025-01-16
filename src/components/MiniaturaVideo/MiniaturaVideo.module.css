@@ -2,8 +2,7 @@
     border-radius: 15px;
     overflow: hidden;
     box-sizing: border-box;
-    /* max-width: 750px; */
-    min-width: 300px;
+    min-width: 340px;
 }
 
 .miniatura:hover {

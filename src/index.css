@@ -13,12 +13,14 @@
   -moz-osx-font-smoothing: grayscale; */
 
   font-family: 'Source Sans Pro', sans-serif;
-  
 
   --blanco:#ffffff;
   --negro:#222;
   --gris:#e2e2e2;
   --azul:#2271D1;
+
+  --alto-header-normal: 125px;
+  --alto-header-mobile: 75px;
 }
 body {
   margin: 0;

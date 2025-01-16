@@ -25,13 +25,19 @@ const Inicio = () => {
         <div className={styles.inicio}>
             {
                 categorias.map((categoria: categoriaType) => {
+                    const videoList = videos.filter(video => video.categoria === categoria.id);
                     return (
-                        <ContenedorCategoria 
-                            categoria={categoria} 
-                            videos={videos.filter(video => video.categoria === categoria.id)}
-                            videoClick={setSelectedVideo}
-                            key={categoria.id}
-                        />
+                        <>
+                            {
+                                videoList.length > 0 &&
+                                <ContenedorCategoria 
+                                    categoria={categoria} 
+                                    videos={videoList}
+                                    videoClick={setSelectedVideo}
+                                    key={categoria.id}
+                                />
+                            }
+                        </>
                     );
                 })
             }
