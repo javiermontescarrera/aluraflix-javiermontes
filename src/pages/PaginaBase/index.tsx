@@ -10,7 +10,7 @@ const PaginaBase = () => {
         <main>
             <Cabecera />
             <AluraFlixProvider>
-                < Banner />
+                <Banner />
                 <Container>
                     <Outlet />
                 </Container>

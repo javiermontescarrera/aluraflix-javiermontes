@@ -13,27 +13,25 @@ const Banner = () => {
   };
 
   return (
-    <div
-      className={styles.capa}
-      style={{ backgroundImage: 'url("/img/Banner.png")' }}
-    >
-        <div className={styles.gradient}>
-        </div>
-        <div className={styles.detalleVideo}>
-          <div className={styles.descripcionVideo}>
+    <div className={styles.capa} >
+      {/* <div className={styles.gradient}>
+      </div> */}
+      <div className={styles.detalleVideo}>
+        <div className={styles.descripcionVideo}>
+          <div className={styles.categoriaVideo}>
             {
               categoria &&
               <Tag titulo={categoria.nombre} color={categoria.color} alto={92} fontsize={48} ancho={297} />
             }
-            <br />
-            <h1>{selectedVideo.titulo}</h1>
-            <p>{selectedVideo.descripcion}</p>
           </div>
-          {
-            categoria &&
-            <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo} colorCategoria={categoria.color}/>
-          }
+          <h1>{selectedVideo.titulo}</h1>
+          <p>{selectedVideo.descripcion}</p>
         </div>
+        {
+          categoria &&
+          <MiniaturaVideo video={selectedVideo} hideButtons videoClick={playVideo} colorCategoria={categoria.color}/>
+        }
+      </div>
     </div>
   );
 };

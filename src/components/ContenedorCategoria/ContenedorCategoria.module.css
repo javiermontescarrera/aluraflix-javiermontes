@@ -4,9 +4,7 @@
     justify-content: center;
     width: 100%;
     max-width: 1440px;
-    overflow-x: auto;
-    scrollbar-color: var(--color-categoria) var(--color-categoria);
-    scrollbar-width: thin;
+    overflow-x: hidden;
 }
 
 .listaVideos {
@@ -18,4 +16,27 @@
     margin: 40px 0 60px 0;
     width: 100%;
     justify-content:left;
+    scrollbar-color: var(--color-categoria) var(--color-categoria);
+    scrollbar-width: thin;
 }
+
+@media screen and (max-width: 480px) {
+    .categoria {
+        width: 100%;
+    }
+    
+    /* .listaVideos {
+        width: 80%;
+    } */
+}
+
+.listaVideos::-webkit-scrollbar {
+    height: 10px;
+    background-color: var(--color-categoria);
+    border-radius: 10px;
+  }
+  
+.listaVideos::-webkit-scrollbar-thumb {
+    background-color: var(--color-categoria);
+    border-radius: 10px;
+  }
