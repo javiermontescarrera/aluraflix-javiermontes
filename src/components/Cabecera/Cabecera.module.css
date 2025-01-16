@@ -1,6 +1,6 @@
 .cabecera {
     height: 125px;
-    width: 99.999%;
+    width: 100%;
     /* min-width: 385px; */
     border-bottom: 4px solid var(--azul);
     display: flex;
