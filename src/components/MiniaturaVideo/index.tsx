@@ -99,9 +99,7 @@ const MiniaturaVideo = (
                 onClick={handleClick}
             >
                 {
-                    hideButtons ?
-                    <ReactPlayer url={video.link} controls width={"100%"} height={playerHeight}/>
-                    :
+                    !hideButtons ?
                     <>
                         <img 
                             src={video.imagen} 
@@ -111,6 +109,8 @@ const MiniaturaVideo = (
                             <MdRemoveRedEye className={styles.iconoAccion} size={iconSize} color={colorIconos} />
                         </div>
                     </>
+                    :
+                    <ReactPlayer url={video.link} controls width={"100%"} height={playerHeight}/>
                 }
             </div>
             {
