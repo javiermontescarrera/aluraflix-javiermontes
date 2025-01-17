@@ -3,3 +3,9 @@
     justify-content: space-between;
     gap: 25px;
 }
+
+@media screen and (max-width: 769px)  {
+    .botonera {
+        gap: 5px;
+    }
+}

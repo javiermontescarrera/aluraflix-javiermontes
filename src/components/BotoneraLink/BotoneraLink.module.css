@@ -20,21 +20,50 @@
     scale: 1.05;
 }
 
+.linkSelected {
+    color: var(--azul);
+    border-color: var(--azul);
+    box-shadow: inset 0px 0px 15px 0px rgba(34, 113, 209, 0.7);
+
+}
+
+.linkBlanco {
+    color: var(--blanco);
+    border-color: var(--blanco);
+}
+
 .icono {
     display: none;
 }
 
+.iconoBlanco {
+    filter: invert(100%) brightness(100%) contrast(100%);
+}
+
+.iconoSelected {
+    filter: invert(37%) sepia(82%) saturate(747%) hue-rotate(180deg) brightness(93%) contrast(96%);
+}
+
 @media screen and (max-width: 769px) {
     .link {
+        font-size: 16px;
         height: 20px;
         padding: 0.5em;
         height: 75%;
+        border-radius: 25px;
     }
 
     .icono {
         display: block;
         width: 20px;
         height: 20px;
-        fill: var(--azul);
+    }
+
+    .linkBlanco {
+        border: none;
+    }
+
+    .textoBlanco {
+        display: none;
     }
 }

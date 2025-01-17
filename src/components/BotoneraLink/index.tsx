@@ -7,29 +7,19 @@ const BotoneraLink = (props: PropsWithChildren<{url: string, icono?: string, alt
     return (
         <Link 
             to={url} 
-            className={styles.link} 
-            style={
-                    { 
-                        borderColor: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}` , 
-                        boxShadow: `${(!selectedButton)?"none":"inset 0px 0px 29px 0px rgba(34, 113, 209, 0.7)"}`, 
-                        color: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}`
-                    }
-                }
+            className={`${styles.link} ${selectedButton ? styles.linkSelected : styles.linkBlanco}`} 
         >
             {
                 icono && 
                 <img 
                     src={icono}
                     alt={alt}
-                    className={styles.icono}
-                    style={
-                            { 
-                                color: `${(!selectedButton)?"var(--blanco)":"var(--azul)"}`
-                            }
-                        }
+                    className={`${styles.icono} ${selectedButton ? styles.iconoSelected : styles.iconoBlanco}`}
                 />
             }
-            {children}
+            <div className={`${selectedButton ? styles.textoSelected : styles.textoBlanco}`}>
+                {children}
+            </div>
         </Link>
     )
 }
