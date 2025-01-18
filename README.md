@@ -52,12 +52,12 @@ Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Est
 ---
 
 ### Inicio - Tablet:
-<img src="public/screenshots/Landing-Tablet.png" alt="Inicio tablet" width="500"/>
+<img src="public/screenshots/Landing-Tablet.png" alt="Inicio tablet" width="400"/>
 
 ---
 
 ### Inicio - Mobile:
-<img src="public/screenshots/Landing-Mobile.png" alt="Inicio mobile" width="500"/>
+<img src="public/screenshots/Landing-Mobile.png" alt="Inicio mobile" width="300"/>
 
 ---
 
@@ -67,7 +67,7 @@ Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Est
 ---
 
 ### Nuevo Video - Mobile:
-<img src="public/screenshots/Nuevo-Video-Mobile.png" alt="Nuevo video mobile" width="500"/>
+<img src="public/screenshots/Nuevo-Video-Mobile.png" alt="Nuevo video mobile" width="300"/>
 
 ---
 
@@ -77,4 +77,4 @@ Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Est
 ---
 
 ### Editar Card - Mobile:
-<img src="public/screenshots/Editar-Card-Mobile.png" alt="Editar card mobile" width="500"/>
+<img src="public/screenshots/Editar-Card-Mobile.png" alt="Editar card mobile" width="300"/>
