@@ -137,14 +137,18 @@ const MiniaturaVideo = (
             }
             <ModalAluraFlix>
                 <div className={styles.modal}>
-                    <div className={styles.modal__botonera}>
-                        <button onClick={() => setAbrirModal(false)}>
-                            <IoMdCloseCircleOutline size={40} className={styles.modal__cerrar} />
-                        </button>
-                    </div>
                     <div className={styles.modal__contenido}>
+                        <div className={styles.modal__botonera}>
+                            <button onClick={() => setAbrirModal(false)}>
+                                <IoMdCloseCircleOutline size={40} className={styles.modal__cerrar} />
+                            </button>
+                        </div>
                         <h2 className={styles.modal__titulo}>Editar Card</h2>
-                        <FormularioVideo/>
+                        {/* <div className={styles.modal__container}>
+                            <div className={styles.modal__formulario}> */}
+                                <FormularioVideo/>
+                            {/* </div>
+                        </div> */}
                     </div>
                 </div>
             </ModalAluraFlix>

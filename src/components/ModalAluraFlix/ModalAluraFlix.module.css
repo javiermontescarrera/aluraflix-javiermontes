@@ -39,7 +39,8 @@
     align-items: center;
     vertical-align: middle; */
     /* backdrop-filter: blur(5px); */
-    background: var(--negro);
+    /* background: var(--negro); */
+    background: rgba(0, 0, 0, 0.01);
     background-color: rgba(0, 0, 0, 0.01);
     backdrop-filter: blur(5px);
     background: rgba(0, 0, 0, 0.01);

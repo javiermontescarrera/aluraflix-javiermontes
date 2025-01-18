@@ -41,9 +41,6 @@
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
-    /* height: 108px; */
-    /* min-width: 573px; */
-    /* min-width: 420px; */
 }
 
 .contenedorCampo {
@@ -62,17 +59,16 @@
     gap: 15px;
     width: 100%;
     min-width: 320px;
-    height: 170px;
+    /* min-height: 170px; */
+    height: auto;
     text-align: left;
     justify-content:start;
-    /* align-items: self-start; */
     align-items: flex-start;
-    /* margin-left: -16px; */
     box-sizing: border-box;
 }
 
 .formulario input {
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     border: 1px solid #ccc;
     background: var(--negro);
@@ -88,9 +84,7 @@
     border: 1px solid #ccc;
     background: var(--negro);
     color: var(--blanco);
-    /* width: 700px; */
     width: 100%;
-    /* height: 220px; */
     font-size: 1.25rem;
 }
 
@@ -111,41 +105,41 @@
 
 @media screen and (max-width: 1028px) {
     .contenido {
-        /* gap: 15px; */
         gap: 20px;
         margin: 0 0 40px 0;
     }
 
-    /* .formulario textarea  {
-        width: 91%;
-    } */
+    .formulario {
+        font-size: 1rem;
+    }
+
+    .formulario input,
+    .formulario textarea  {
+        font-size: 0.875rem;
+    }
+
+    .formulario button {
+        font-size: 0.875rem;
+    }
 
     .contenedorCampo,
     .monocomponente {
+        /* min-height: 100px; */
         gap: 5px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .formulario {
-        font-size: 25px;
-        /* gap: 40px; */
-        /* gap: 15px; */
+    .contenido {
+        margin: 0 0 28px 0;
     }
 
     .contenedorCampo {
         max-width: 320px;
     }
 
-    .formulario input,
-    .formulario textarea  {
-        font-size: 15px;
-        /* max-width: 320px; */
-        /* width:fit-content; */
-    }
-
-    .divider button {
-        font-size: 15px;
+    .formulario button {
         gap: 15px;
+        width: 140px;
     }
 }

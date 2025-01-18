@@ -8,25 +8,27 @@ const ModalAluraFlix = ({children}: {children: React.ReactNode}) => {
   const { abrirModal, setAbrirModal } = useAluraFlixContext();
   const handleClose = () => setAbrirModal(false);
 
+  const style = {
+    position: 'absolute',
+    top: '0px',
+    left: '50%',
+    transform: 'translate(-50%, -6900%)',
+    width: '100%',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    // p: 4,
+  };
+  
   return (
     <div>
       
       <Modal
         open={abrirModal}
         onClose={handleClose}
-        // className={styles.customBackdrop}
-        // slotProps={{
-        //   root: { className: styles.overlay },
-        //   // root: {
-        //   //   style: {
-        //   //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        //   //     backdropFilter: 'blur(5px)',
-        //   //   },
-        //   // },
-        // }}
       >
-        <Box
-          // className={styles.modal} 
+        <Box 
+          sx={style}
         >
           {children}
         </Box>

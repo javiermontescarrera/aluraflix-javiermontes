@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
+// import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
+// import Select, { SelectChangeEvent } from "@mui/material/Select";
+// import MenuItem from "@mui/material/MenuItem";
+// import Box from '@mui/material/Box';
+// import FormControl from '@mui/material/FormControl';
+import {
+    Button,
+    TextField,
+    Select,
+    SelectChangeEvent,
+    MenuItem,
+    Box,
+    FormControl,
+    useMediaQuery,
+} from "@mui/material";
 
 import styles from "./FormularioVideo.module.css";
 import { useAluraFlixContext } from "../../context/AluraFlix";
@@ -39,6 +49,8 @@ const FormularioVideo = () => {
             message: "Deben ser al menos 3 caracteres"
         }
     });
+
+    const isSmallScreen = useMediaQuery('(max-width:1028px)');
 
     const handleSubmit = () => {
         const videoEditado = videoEditar ? 
@@ -167,13 +179,13 @@ const FormularioVideo = () => {
                                         required
                                         displayEmpty
                                         style={{ 
-                                            fontSize: "1.125rem",
+                                            fontSize: isSmallScreen ? ".875rem": "1.125rem",
                                             color: "white",
                                             width: "100%",
-                                            height: '49px',
+                                            height: isSmallScreen ? '35px' : '42px',
                                             textAlign: 'left',
                                             borderRadius: '10px',
-                                            border: '1px solid #ccc',
+                                            border: '1px solid #ccc',  
                                         }}
                                         onChange={(event: SelectChangeEvent) => {
                                             setCategoria(event.target.value as string);
@@ -275,8 +287,7 @@ const FormularioVideo = () => {
                                 input: {
                                         style: {
                                             padding: "0px",
-                                            // width: "fit-content",
-                                            width: "91%",
+                                            width: "98%",
                                             borderRadius: "10px",
                                         },
                                 },
