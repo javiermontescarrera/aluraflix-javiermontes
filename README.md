@@ -3,7 +3,10 @@
 
 ## Introducción
 
-Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Este proyecto es una plataforma de streaming de videos que permite a los usuarios visualizar, agregar y editar cards correspondientes a videos de Alura Latam. Asi como visualizar dichos videos. 
+Aluraflix es un proyecto desarrollado como parte del desafío de Oracle ONE. Este proyecto es una plataforma de streaming de videos que permite a los usuarios visualizar, agregar y editar cards correspondientes a videos de Alura Latam. Asi como visualizar dichos videos.
+
+Si deseas ver su funcionamiento, aqui tienes la web desplegada:
+<https://aluraflix-javiermontes.vercel.app>
 
 ## Tecnologías y técnicas utilizadas
 
